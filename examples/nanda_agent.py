@@ -204,7 +204,7 @@ def main():
         port=PORT,
         registry_url=AGENT_CONFIG["registry_url"],
         public_url=AGENT_CONFIG["public_url"],
-        enable_telemetry=False
+        enable_telemetry=True
     )
     
     print(f"🚀 Agent URL: http://localhost:{PORT}/a2a")
@@ -262,7 +262,7 @@ When someone asks about yourself, mention that you're part of the NANDA agent ne
         agent_logic=agent_logic,
         port=port,
         registry_url=custom_config["registry_url"],
-        enable_telemetry=False
+        enable_telemetry=True
     )
     
     print(f"🤖 Starting custom LLM agent: {agent_name}")

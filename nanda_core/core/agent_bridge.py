@@ -197,7 +197,7 @@ class SimpleAgentBridge(A2AServer):
             )
             
             if self.telemetry:
-                self.telemetry.log_agent_message_sent(self.agent_id, target_agent_id, conversation_id)
+                self.telemetry.log_message_sent(target_agent_id, conversation_id)
             
             # Extract the actual response content from the target agent
             logger.info(f"🔍 [{self.agent_id}] Response type: {type(response)}, has parts: {hasattr(response, 'parts') if response else 'None'}")
@@ -234,12 +234,6 @@ class SimpleAgentBridge(A2AServer):
         # Fallback to local discovery (for testing)
         local_agents = {
             "test_agent": "http://localhost:6000",
-            "pirate_agent": "http://localhost:6001", 
-            "helpful_agent": "http://localhost:6002",
-            "echo_agent": "http://localhost:6003",
-            "simple_test_agent": "http://localhost:6005",
-            "agent_alpha": "http://localhost:6010",
-            "agent_beta": "http://localhost:6011"
         }
         
         if agent_id in local_agents:

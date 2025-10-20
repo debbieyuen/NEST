@@ -23,7 +23,7 @@ class NANDA:
                  registry_url: Optional[str] = None,
                  public_url: Optional[str] = None,
                  host: str = "0.0.0.0",
-                 enable_telemetry: bool = False):
+                 enable_telemetry: bool = True):
         """
         Create a simple NANDA agent
         
@@ -93,76 +93,9 @@ class NANDA:
                 print(f"⚠️ Failed to register agent: HTTP {response.status_code}")
         except Exception as e:
             print(f"⚠️ Registration error: {e}")
-
+    
     def stop(self):
-        """Stop the agent (placeholder for cleanup)"""
+        """Stop the agent and cleanup telemetry"""
+        if self.telemetry:
+            self.telemetry.stop()
         print(f"🛑 Stopping agent '{self.agent_id}'")
-
-
-# Keep the StreamlinedAdapter class name for compatibility but simplified
-class StreamlinedAdapter(NANDA):
-    """Alias for NANDA class for compatibility"""
-    pass
-
-
-# Example agent logic functions
-def echo_agent(message: str, conversation_id: str) -> str:
-    """Simple echo agent"""
-    return f"Echo: {message}"
-
-
-def pirate_agent(message: str, conversation_id: str) -> str:
-    """Pirate-style agent"""
-    return f"Arrr! {message}, matey!"
-
-
-def helpful_agent(message: str, conversation_id: str) -> str:
-    """Helpful agent"""
-    if "time" in message.lower():
-        from datetime import datetime
-        return f"Current time: {datetime.now().strftime('%H:%M:%S')}"
-    elif "help" in message.lower():
-        return "I can help with time, calculations, and general questions!"
-    elif any(op in message for op in ['+', '-', '*', '/']):
-        try:
-            result = eval(message.replace('x', '*').replace('X', '*'))
-            return f"Result: {result}"
-        except:
-            return "Invalid calculation"
-    else:
-        return f"I can help with: {message}"
-
-
-def main():
-    """Main CLI entry point"""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Simple NANDA Agent")
-    parser.add_argument("--agent-id", required=True, help="Agent ID")
-    parser.add_argument("--port", type=int, default=6000, help="Server port")
-    parser.add_argument("--host", default="0.0.0.0", help="Server host")
-    parser.add_argument("--registry", help="Registry URL")
-    parser.add_argument("--public-url", help="Public URL for registration")
-    parser.add_argument("--no-register", action="store_true", help="Don't register with registry")
-    
-    args = parser.parse_args()
-    
-    # Use helpful agent as default
-    nanda = NANDA(
-        agent_id=args.agent_id,
-        agent_logic=helpful_agent,
-        port=args.port,
-        registry_url=args.registry,
-        public_url=args.public_url,
-        host=args.host
-    )
-    
-    try:
-        nanda.start(register=not args.no_register)
-    except KeyboardInterrupt:
-        print("\n🛑 Server stopped")
-        nanda.stop()
-
-
-if __name__ == "__main__":
-    main()
