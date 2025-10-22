@@ -1,20 +1,35 @@
 #!/usr/bin/env python3
 """
-Custom NANDA Agent Template
+NANDA Infrastructure Agent
 
-Copy this template and modify the agent_logic function to create your own agent.
+Agent that bridges structural mismatches between how systems authenticate and how agents behave.
+A trust fabric that carries verifiable proof of who the agent is, what is allowed to do, and for whom. 
 """
 
 import os
 import sys
+from datetime import datetime
 
 # Add the streamlined adapter to the path
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from nanda_core.core.adapter import NANDA
 
+# Config via env
+AGENT_ID = os.getenv("AGENT_ID", "infra-agent")
+AGENT_NAME = os.getenv("AGENT_NAME", "Infrastructure Agent")
+PORT = int(os.getenv("PORT", "6030"))
+REGISTRY_URL = os.getenv("REGISTRY_URL")          # e.g. https://registry.example.com
+PUBLIC_URL = os.getenv("PUBLIC_URL")              # e.g. https://infra.example.com
+ENABLE_TELEMETRY = os.getenv("ENABLE_TELEMETRY", "false").lower() in {"1", "true", "yes"}
+REGISTER_ON_START = os.getenv("REGISTER_ON_START")  # allow override
+if REGISTER_ON_START is None:
+    # Default: register if a registry URL is present
+    REGISTER_ON_START = bool(REGISTRY_URL)
+else:
+    REGISTER_ON_START = REGISTER_ON_START.lower() in {"1", "true", "yes"}
 
-def my_custom_agent_logic(message: str, conversation_id: str) -> str:
+def infra_agent_logic(message: str, conversation_id: str) -> str:
     """
     Define your agent's behavior here.
     
@@ -27,10 +42,11 @@ def my_custom_agent_logic(message: str, conversation_id: str) -> str:
     """
     
     # Example: Simple keyword-based responses
-    message_lower = message.lower()
+    # message_lower = message.lower() 
+    message_lower = message.lower().strip()
     
     if "hello" in message_lower or "hi" in message_lower:
-        return "Hello! I'm a custom NANDA agent. How can I help you?"
+        return "Hello! I'm a custom NANDA infrastructure agent. How can I help you?"
     
     elif "time" in message_lower:
         from datetime import datetime
@@ -60,7 +76,7 @@ def my_custom_agent_logic(message: str, conversation_id: str) -> str:
 
 
 def main():
-    """Main function to start your custom agent"""
+    """Main function to start your custom infrastructure agent"""
     
     # Check for API key (if your agent needs external services)
     if not os.getenv("ANTHROPIC_API_KEY"):
@@ -68,8 +84,8 @@ def main():
     
     # Create your NANDA agent (modify these parameters)
     nanda = NANDA(
-        agent_id="my_custom_agent",           # Change this to your agent name
-        agent_logic=my_custom_agent_logic,    # Your agent logic function
+        agent_id="infra_agent",           # Change this to your agent name
+        agent_logic=infra_agent_logic,    # Your agent logic function
         port=6030,                            # Change port if needed
         registry_url=None,                    # Add registry URL if you have one
         public_url=None,                      # Add public URL for registration
@@ -77,11 +93,14 @@ def main():
     )
     
     print("""
-🤖 Custom NANDA Agent Starting
+🤖 Custom NANDA Infrastructure Agent Starting
 ===============================
-Agent ID: my_custom_agent
-Port: 6030
+Agent ID: {AGENT_ID}
+Port: {PORT}
 Type: Custom Logic
+Registry URL: {REGISTRY_URL or '(none)'}
+Public URL: {PUBLIC_URL or '(none)'}
+Register on start: {REGISTER_ON_START}
 ===============================
 
 📝 Test your agent:

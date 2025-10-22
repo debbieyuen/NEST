@@ -7,6 +7,7 @@ Clean, simple bridge focused on agent-to-agent communication.
 
 import os
 import uuid
+import json
 import logging
 import requests
 from typing import Callable, Optional, Dict, Any
@@ -15,6 +16,17 @@ from python_a2a import A2AServer, A2AClient, Message, TextContent, MessageRole, 
 # Configure logger to capture conversation logs
 logger = logging.getLogger(__name__)
 
+def _agent_metadata(agent_id: str, registry_url: Optional[str]) -> dict:
+    return {
+        "agent_id": agent_id,
+        "agent_name": os.getenv("AGENT_NAME", agent_id),
+        "domain": os.getenv("DOMAIN", "general"),
+        "specialization": os.getenv("SPECIALIZATION", "multi-domain"),
+        "capabilities": [c.strip() for c in os.getenv("CAPABILITIES", "").split(",") if c.strip()],
+        "public_url": os.getenv("PUBLIC_URL"),
+        "registry_url": registry_url,
+        "version": os.getenv("AGENT_VERSION", "0.1.0"),
+    }
 
 class SimpleAgentBridge(A2AServer):
     """Simple Agent Bridge for A2A communication only"""
@@ -146,6 +158,8 @@ class SimpleAgentBridge(A2AServer):
 /help - Show this help
 /ping - Test agent responsiveness  
 /status - Show agent status
+/whoami - Return agent identity metadata (JSON)
+/verify [agent_id=.. domain=.. capability=..] - Boolean check
 @agent_id message - Send message to another agent"""
             return self._create_response(msg, conversation_id, help_text)
         
@@ -158,6 +172,24 @@ class SimpleAgentBridge(A2AServer):
                 status += f", Registry: {self.registry_url}"
             return self._create_response(msg, conversation_id, status)
         
+        elif command == "whoami":
+            meta = _agent_metadata(self.agent_id, self.registry_url)
+            return self._create_response(msg, conversation_id, json.dumps(meta, indent=2))
+
+        elif command == "verify":
+            # usage: /verify agent_id=infra-expert domain=infrastructure capability=rollout
+            want = {}
+            for token in args.split():
+                if "=" in token:
+                    k, v = token.split("=", 1)
+                    want[k.strip()] = v.strip()
+
+            meta = _agent_metadata(self.agent_id, self.registry_url)
+            ok_id  = ("agent_id" not in want) or (meta["agent_id"] == want["agent_id"])
+            ok_dom = ("domain" not in want)    or (meta["domain"] == want["domain"])
+            ok_cap = ("capability" not in want) or (want["capability"] in meta["capabilities"])
+            return self._create_response(msg, conversation_id, "OK" if (ok_id and ok_dom and ok_cap) else "NO")
+
         else:
             return self._create_response(
                 msg, conversation_id,
