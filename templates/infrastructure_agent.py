@@ -28,6 +28,14 @@ try:
 except Exception:
     A2AClient = None  
 
+# Infrastructure and Certifier Agent
+from templates.certifier import (
+    CertifierConfig,
+    run_certification_once,
+    start_certifier_loop,
+    load_agent_facts,
+    query_recent_runs,
+)
 
 # Config via env
 AGENT_ID = os.getenv("AGENT_ID", "infra-agent")
