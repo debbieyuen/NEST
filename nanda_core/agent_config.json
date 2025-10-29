@@ -1,0 +1,604 @@
+{
+  "agents": [
+    {
+      "id": "warreninsights-59d34f",
+      "ip_address": "13.218.248.227",
+      "port": 6000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "strategymaven-402c18",
+      "ip_address": "13.218.248.227",
+      "port": 7000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "brandbuilder-2b617b",
+      "ip_address": "13.218.248.227",
+      "port": 8000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "dealcloser-c497a6",
+      "ip_address": "13.218.248.227",
+      "port": 9000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "peoplefirst-76e269",
+      "ip_address": "13.218.248.227",
+      "port": 10000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "efficiencyexpert-050b6d",
+      "ip_address": "13.218.248.227",
+      "port": 11000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "counselwise-225447",
+      "ip_address": "13.218.248.227",
+      "port": 12000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "taxoptimizer-6dba3c",
+      "ip_address": "13.218.248.227",
+      "port": 13000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "shieldguardian-098c37",
+      "ip_address": "13.218.248.227",
+      "port": 14000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "startupsage-809d21",
+      "ip_address": "13.218.248.227",
+      "port": 15000,
+      "group": "Business & Finance Experts"
+    },
+    {
+      "id": "codemaster-9c1241",
+      "ip_address": "3.88.114.237",
+      "port": 6000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "pipelinebuilder-eb5d2b",
+      "ip_address": "3.88.114.237",
+      "port": 7000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "deployninja-f75974",
+      "ip_address": "3.88.114.237",
+      "port": 8000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "cyberguardian-2ab8bc",
+      "ip_address": "3.88.114.237",
+      "port": 9000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "neuralpioneer-3bc625",
+      "ip_address": "3.88.114.237",
+      "port": 10000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "chainbuilder-44e625",
+      "ip_address": "3.88.114.237",
+      "port": 11000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "appcreator-ae8cca",
+      "ip_address": "3.88.114.237",
+      "port": 12000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "connectedthings-5d4aa6",
+      "ip_address": "3.88.114.237",
+      "port": 13000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "playmaker-b56344",
+      "ip_address": "3.88.114.237",
+      "port": 14000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "quantumexplorer-c5763c",
+      "ip_address": "3.88.114.237",
+      "port": 15000,
+      "group": "Technology & Engineering"
+    },
+    {
+      "id": "visualartist-322fc6",
+      "ip_address": "3.80.52.64",
+      "port": 6000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "contentcreator-7e4b78",
+      "ip_address": "3.80.52.64",
+      "port": 7000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "uxdesigner-9e0e19",
+      "ip_address": "3.80.52.64",
+      "port": 8000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "videomaker-8764f0",
+      "ip_address": "3.80.52.64",
+      "port": 9000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "socialmedia-1e57bd",
+      "ip_address": "3.80.52.64",
+      "port": 10000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "photographer-8396ef",
+      "ip_address": "3.80.52.64",
+      "port": 11000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "animator-57420b",
+      "ip_address": "3.80.52.64",
+      "port": 12000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "webdesigner-3b56e9",
+      "ip_address": "3.80.52.64",
+      "port": 13000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "brandstrategist-fce0f4",
+      "ip_address": "3.80.52.64",
+      "port": 14000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "artdirector-8aa17a",
+      "ip_address": "3.80.52.64",
+      "port": 15000,
+      "group": "Creative & Design"
+    },
+    {
+      "id": "medicaladvisor-38ef40",
+      "ip_address": "98.88.252.76",
+      "port": 6000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "bioinformatics-b5f7a4",
+      "ip_address": "98.88.252.76",
+      "port": 7000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "nutritionist-4a632c",
+      "ip_address": "98.88.252.76",
+      "port": 8000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "mentalhealth-52c21b",
+      "ip_address": "98.88.252.76",
+      "port": 9000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "fitnesscoach-4ef7f4",
+      "ip_address": "98.88.252.76",
+      "port": 10000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "pharmacist-a1cd1f",
+      "ip_address": "98.88.252.76",
+      "port": 11000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "publichealth-529815",
+      "ip_address": "98.88.252.76",
+      "port": 12000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "medicaltech-bc32b0",
+      "ip_address": "98.88.252.76",
+      "port": 13000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "veterinarian-889e4b",
+      "ip_address": "98.88.252.76",
+      "port": 14000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "biotech-af2703",
+      "ip_address": "98.88.252.76",
+      "port": 15000,
+      "group": "Healthcare & Life Sciences"
+    },
+    {
+      "id": "educator-255263",
+      "ip_address": "3.208.15.59",
+      "port": 6000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "researcher-2e13cd",
+      "ip_address": "3.208.15.59",
+      "port": 7000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "librarian-779984",
+      "ip_address": "3.208.15.59",
+      "port": 8000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "tutor-891969",
+      "ip_address": "3.208.15.59",
+      "port": 9000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "linguist-c8132b",
+      "ip_address": "3.208.15.59",
+      "port": 10000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "historian-6b2a83",
+      "ip_address": "3.208.15.59",
+      "port": 11000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "philosopher-219d0e",
+      "ip_address": "3.208.15.59",
+      "port": 12000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "scientist-ac94bf",
+      "ip_address": "3.208.15.59",
+      "port": 13000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "mathematician-b9e0b3",
+      "ip_address": "3.208.15.59",
+      "port": 14000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "archivist-c5a992",
+      "ip_address": "3.208.15.59",
+      "port": 15000,
+      "group": "Education & Research"
+    },
+    {
+      "id": "journalist-4d4dcb",
+      "ip_address": "3.80.224.18",
+      "port": 6000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "filmmaker-587459",
+      "ip_address": "3.80.224.18",
+      "port": 7000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "musician-cda3e1",
+      "ip_address": "3.80.224.18",
+      "port": 8000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "podcaster-460b3b",
+      "ip_address": "3.80.224.18",
+      "port": 9000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "broadcaster-e8c618",
+      "ip_address": "3.80.224.18",
+      "port": 10000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "gamedesigner-e56c84",
+      "ip_address": "3.80.224.18",
+      "port": 11000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "comedian-fa8e3c",
+      "ip_address": "3.80.224.18",
+      "port": 12000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "actor-d59969",
+      "ip_address": "3.80.224.18",
+      "port": 13000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "critic-61c9fc",
+      "ip_address": "3.80.224.18",
+      "port": 14000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "producer-40fa15",
+      "ip_address": "3.80.224.18",
+      "port": 15000,
+      "group": "Media & Entertainment"
+    },
+    {
+      "id": "environmentalist-6b91a5",
+      "ip_address": "54.91.168.169",
+      "port": 6000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "climateexpert-1dfaae",
+      "ip_address": "54.91.168.169",
+      "port": 7000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "renewableenergy-d60bf5",
+      "ip_address": "54.91.168.169",
+      "port": 8000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "ecologist-4755d2",
+      "ip_address": "54.91.168.169",
+      "port": 9000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "wastemanager-1fe41f",
+      "ip_address": "54.91.168.169",
+      "port": 10000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "waterexpert-95e688",
+      "ip_address": "54.91.168.169",
+      "port": 11000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "urbanplanner-68e891",
+      "ip_address": "54.91.168.169",
+      "port": 12000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "agriculturist-37464d",
+      "ip_address": "54.91.168.169",
+      "port": 13000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "forestry-b930aa",
+      "ip_address": "54.91.168.169",
+      "port": 14000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "greentech-e9d6a0",
+      "ip_address": "54.91.168.169",
+      "port": 15000,
+      "group": "Environmental & Sustainability"
+    },
+    {
+      "id": "socialworker-24f1b9",
+      "ip_address": "18.209.17.140",
+      "port": 6000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "nonprofit-ca2adf",
+      "ip_address": "18.209.17.140",
+      "port": 7000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "counselor-cce032",
+      "ip_address": "18.209.17.140",
+      "port": 8000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "volunteer-9993a4",
+      "ip_address": "18.209.17.140",
+      "port": 9000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "eldercare-b7418e",
+      "ip_address": "18.209.17.140",
+      "port": 10000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "childcare-0cf143",
+      "ip_address": "18.209.17.140",
+      "port": 11000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "homeless-5c1f3d",
+      "ip_address": "18.209.17.140",
+      "port": 12000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "disability-218c48",
+      "ip_address": "18.209.17.140",
+      "port": 13000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "immigration-4fbc20",
+      "ip_address": "18.209.17.140",
+      "port": 14000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "community-1d68ea",
+      "ip_address": "18.209.17.140",
+      "port": 15000,
+      "group": "Social Services & Community"
+    },
+    {
+      "id": "athletecoach-d15085",
+      "ip_address": "54.210.209.107",
+      "port": 6000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "sportsanalyst-f75168",
+      "ip_address": "54.210.209.107",
+      "port": 7000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "referee-7998d9",
+      "ip_address": "54.210.209.107",
+      "port": 8000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "recreation-d3b9c1",
+      "ip_address": "54.210.209.107",
+      "port": 9000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "outdoorguide-4a5492",
+      "ip_address": "54.210.209.107",
+      "port": 10000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "yogainstructor-2faaee",
+      "ip_address": "54.210.209.107",
+      "port": 11000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "swimmer-6d784b",
+      "ip_address": "54.210.209.107",
+      "port": 12000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "runner-5385e1",
+      "ip_address": "54.210.209.107",
+      "port": 13000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "teambuilder-f0a75e",
+      "ip_address": "54.210.209.107",
+      "port": 14000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "esports-c3417a",
+      "ip_address": "54.210.209.107",
+      "port": 15000,
+      "group": "Sports & Recreation"
+    },
+    {
+      "id": "travelagent-e4a79e",
+      "ip_address": "13.220.104.195",
+      "port": 6000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "hotelmanager-925417",
+      "ip_address": "13.220.104.195",
+      "port": 7000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "tourguide-52aaa3",
+      "ip_address": "13.220.104.195",
+      "port": 8000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "chef-b919bb",
+      "ip_address": "13.220.104.195",
+      "port": 9000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "concierge-4fd5d7",
+      "ip_address": "13.220.104.195",
+      "port": 10000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "eventplanner-48dc52",
+      "ip_address": "13.220.104.195",
+      "port": 11000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "airline-5f82d9",
+      "ip_address": "13.220.104.195",
+      "port": 12000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "cruise-87d5ee",
+      "ip_address": "13.220.104.195",
+      "port": 13000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "adventure-31e0f2",
+      "ip_address": "13.220.104.195",
+      "port": 14000,
+      "group": "Travel & Hospitality"
+    },
+    {
+      "id": "cultural-2d8908",
+      "ip_address": "13.220.104.195",
+      "port": 15000,
+      "group": "Travel & Hospitality"
+    }
+  ]
+}
