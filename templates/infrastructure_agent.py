@@ -54,6 +54,35 @@ else:
 MONGO_URI = os.getenv("MONGO_URI")     
 AWS_REGION = os.getenv("AWS_REGION")
 
+# Certifier Wiring
+AGENT_FACTS_PATH = os.getenv("AGENT_FACTS_PATH", "agent_facts.json")
+CAP_PACKS_DIR    = os.getenv("CAPABILITY_PACKS_DIR", "capability_packs")
+
+ENABLE_CERTIFIER = os.getenv("ENABLE_CERTIFIER", "false").lower() in {"1","true","yes"}
+CERT_PERIOD_S    = int(os.getenv("CERTIFIER_PERIOD_SECONDS", "3600"))
+CERT_NUM_Q       = int(os.getenv("CERTIFIER_NUM_QUESTIONS", "10"))
+CERT_CAPABILITY  = os.getenv("CERTIFIER_CAPABILITY", "general")   # or "all"
+CERT_AGENT_ID    = os.getenv("CERTIFIER_AGENT_ID")                # optional pin
+CERT_MAX_CAPS    = int(os.getenv("CERTIFIER_MAX_CAPS_PER_RUN", "5"))
+CERT_CLAIMED_ONLY= os.getenv("CERTIFIER_ONLY_CLAIMED", "true").lower() in {"1","true","yes"}
+
+CERT_CFG = CertifierConfig(
+    infrastructure_agent_id=AGENT_ID,
+    registry_url=REGISTRY_URL,
+    mongo_uri=MONGO_URI,
+    mongo_db=os.getenv("MONGO_DB", "nest"),
+    mongo_facts_coll=os.getenv("MONGO_FACTS_COLL", "agent_facts"),
+    agent_facts_path=AGENT_FACTS_PATH,
+    caps_dir=CAP_PACKS_DIR,
+    default_capability=CERT_CAPABILITY,
+    default_agent_id=CERT_AGENT_ID,
+    period_seconds=CERT_PERIOD_S,
+    max_caps_per_run=CERT_MAX_CAPS,
+    claimed_only=CERT_CLAIMED_ONLY,
+    A2AClient=A2AClient, Message=Message, TextContent=TextContent, MessageRole=MessageRole,
+)
+
+
 def _lookup_agent_url(agent_id: str) -> str | None:
     """Query the registry for an agent's base URL."""
     if not REGISTRY_URL:
@@ -199,6 +228,40 @@ def infra_agent_logic(message: str, conversation_id: str) -> str:
 
         return f"{'PASS' if ok else 'FAIL'} — {details} ({mongo_status})"
     
+    # certification
+    if message_lower.startswith("certify"):
+        tokens = [p for p in message.split() if "=" in p]
+        params = {k: v for k, v in (p.split("=", 1) for p in tokens)}
+        tgt = params.get("agent_id")
+        cap = params.get("capability", CERT_CAPABILITY)
+        try:
+            num = int(params.get("num", str(CERT_NUM_Q)))
+        except Exception:
+            num = CERT_NUM_Q
+        try:
+            run = run_certification_once(CERT_CFG, agent_id=tgt, capability=cap, num_questions=num)
+            return json.dumps({
+                "run_id": run["run_id"],
+                "target_agent_id": run["target_agent_id"],
+                "tested_capabilities": run["tested_capabilities"],
+                "summary": run["summary"],
+            }, indent=2)
+        except Exception as e:
+            return f"certify: error: {e}"
+
+    # certification results
+    if message_lower.startswith("agentfacts"):
+        tokens = [p for p in message.split() if "=" in p]
+        params = {k: v for k, v in (p.split("=", 1) for p in tokens)}
+        aid = params.get("agent_id")
+        cap = params.get("capability")
+        last = int(params.get("last", "3"))
+        try:
+            data = query_recent_runs(AGENT_FACTS_PATH, agent_id=aid, capability=cap, last=last)
+            return json.dumps(data, indent=2)
+        except Exception as e:
+            return f"agentfacts: error: {e}"
+
     if "hello" in message_lower or "hi" in message_lower:
         return "Hello! I'm a custom NANDA infrastructure agent. How can I help you?"
     
@@ -213,6 +276,9 @@ def infra_agent_logic(message: str, conversation_id: str) -> str:
         • Answer basic questions
         • Route messages to other agents with @agent_id
         • Verify other agents, e.g.: verify agent_id=<id> capability=<capability>
+        • Certify agents:
+            - certify [agent_id=<id>] [capability=general|all|<cap>] [num=10]
+            - agentfacts [agent_id=<id>] [capability=<cap>] [last=3]
         
         What would you like to do?"""
     
@@ -237,6 +303,11 @@ def main():
     if not os.getenv("ANTHROPIC_API_KEY"):
         print("⚠️ ANTHROPIC_API_KEY not set (may be needed for some features)")
     
+    # Start periodic certification if enabled
+    if ENABLE_CERTIFIER:
+        print(f"🔁 Certifier loop enabled: every {CERT_CFG.period_seconds}s | capability={CERT_CFG.default_capability} | agent={CERT_CFG.default_agent_id or 'round-robin'}")
+        start_certifier_loop(CERT_CFG)
+
     # Create your NANDA agent (modify these parameters)
     nanda = NANDA(
         agent_id="infra_agent",           # Change this to your agent name
